@@ -1,0 +1,30 @@
+{
+  "os": "Linux-6.1.85+-x86_64-with-glibc2.35",
+  "python": "CPython 3.11.11",
+  "startedAt": "2025-03-18T21:10:02.123370Z",
+  "program": "MLDL_lab3.ipynb",
+  "git": {
+    "remote": "https://github.com/Polixide/mldl_lab3.git",
+    "commit": "72d795cd6e141e33bd43a7d3115f3a58d8324167"
+  },
+  "email": "dani.catalano02@gmail.com",
+  "root": "/content/mldl_lab3",
+  "host": "1a98242e31ee",
+  "executable": "/usr/bin/python3",
+  "colab": "https://colab.research.google.com/notebook#fileId=1r2iWUy6BLHoxlC0M2EUnfEL-yaFcR1kw",
+  "cpu_count": 1,
+  "cpu_count_logical": 2,
+  "disk": {
+    "/": {
+      "total": "115658190848",
+      "used": "39652417536"
+    }
+  },
+  "memory": {
+    "total": "13609422848"
+  },
+  "cpu": {
+    "count": 1,
+    "countLogical": 2
+  }
+}
