@@ -9,9 +9,11 @@ class TinyImageNetDataLoader:
 
         # Definizione delle trasformazioni
         self.transform = T.Compose([
-            T.RandomResizedCrop(224, scale=(0.8, 1.0)),
-            T.RandomHorizontalFlip(0.5),
-            T.Resize((224, 224)),  # Resize 
+            T.RandomResizedCrop(224, scale=(0.7, 1.0)),
+            T.RandomHorizontalFlip(),
+            T.RandomRotation(20),
+            T.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
+            T.RandomAffine(degrees=0, translate=(0.2, 0.2)),
             T.ToTensor(),
             T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])

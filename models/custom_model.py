@@ -9,15 +9,32 @@ class CustomNet(nn.Module):
 
         # Define layers of the neural network
         self.layers = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=3, padding=1),
-            nn.GELU(),
-            nn.MaxPool2d(2, 2),  # Reduce spatial size from 224x224 -> 112x112
-            nn.Conv2d(64, 128, kernel_size=3, padding=1),
-            nn.GELU(),
-            nn.MaxPool2d(2, 2),  # Reduce spatial size from 112x112 -> 56x56
-            nn.Flatten(),
-            nn.Linear(128 * 56 * 56, 200),  # Adjusted size based on pooling ,200 is the number of classes in TinyImageNet , last output channel size has to be equal to the number of classes we want to classify
+          nn.Conv2d(3, 64, kernel_size=3, padding=1),
+          nn.BatchNorm2d(64),
+          nn.GELU(),
+          nn.Conv2d(64, 128, kernel_size=3, padding=1),
+          nn.BatchNorm2d(128),
+          nn.GELU(),
+          nn.MaxPool2d(2, 2),
 
+          nn.Conv2d(128, 256, kernel_size=3, padding=1),
+          nn.BatchNorm2d(256),
+          nn.GELU(),
+          nn.Conv2d(256, 512, kernel_size=3, padding=1),
+          nn.BatchNorm2d(512),
+          nn.GELU(),
+          nn.MaxPool2d(2, 2),
+
+          nn.Conv2d(512, 1024, kernel_size=3, padding=1),
+          nn.BatchNorm2d(1024),
+          nn.GELU(),
+          nn.MaxPool2d(2, 2),
+
+          nn.Flatten(),
+          nn.Linear(1024 * 28 * 28, 4096),
+          nn.GELU(),
+          nn.Dropout(0.5),
+          nn.Linear(4096, 200),
         )
 
     def forward(self, x):
