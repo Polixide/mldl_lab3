@@ -1,6 +1,7 @@
 
 import torch
 from torch import nn
+from tqdm import tqdm
 
 def trainloop(epoch, model, train_loader, criterion, optimizer):
   model.train()
@@ -8,9 +9,9 @@ def trainloop(epoch, model, train_loader, criterion, optimizer):
   correct = 0
   total = 0
 
-  for batch_idx, (inputs, targets) in enumerate(train_loader):
+  for batch_idx, (inputs, targets) in enumerate(tqdm(train_loader)):
     inputs, targets = inputs.cuda(), targets.cuda()
-    print(batch_idx,end="\r")
+    
     #compute prediction and loss
     pred = model(inputs)
     loss = criterion(pred,targets)

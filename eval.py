@@ -1,4 +1,5 @@
 import torch
+from tqdm import tqdm
 # Validation loop
 def validate(model, val_loader, criterion):
 
@@ -7,7 +8,7 @@ def validate(model, val_loader, criterion):
   correct, total = 0, 0
 
   with torch.no_grad():
-    for batch_idx, (inputs, targets) in enumerate(val_loader):
+    for batch_idx, (inputs, targets) in enumerate(tqdm(val_loader)):
       inputs, targets = inputs.cuda(), targets.cuda()
 
       pred = model(inputs)
