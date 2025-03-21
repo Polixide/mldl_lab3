@@ -1,0 +1,42 @@
+{
+  "os": "Linux-6.1.85+-x86_64-with-glibc2.35",
+  "python": "CPython 3.11.11",
+  "startedAt": "2025-03-21T18:00:45.731343Z",
+  "program": "/content/mldl_lab3/main.py",
+  "codePath": "main.py",
+  "git": {
+    "remote": "https://github.com/Polixide/mldl_lab3.git",
+    "commit": "6ddf81e38cede5f3d46b8343aa1361593800d6e6"
+  },
+  "email": "dani.catalano02@gmail.com",
+  "root": "/content/mldl_lab3",
+  "host": "025aa5c94dce",
+  "executable": "/usr/bin/python3",
+  "codePathLocal": "main.py",
+  "cpu_count": 1,
+  "cpu_count_logical": 2,
+  "gpu": "Tesla T4",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "120942624768",
+      "used": "40434630656"
+    }
+  },
+  "memory": {
+    "total": "13609431040"
+  },
+  "cpu": {
+    "count": 1,
+    "countLogical": 2
+  },
+  "gpu_nvidia": [
+    {
+      "name": "Tesla T4",
+      "memoryTotal": "16106127360",
+      "cudaCores": 2560,
+      "architecture": "Turing"
+    }
+  ],
+  "cudaVersion": "12.4"
+}

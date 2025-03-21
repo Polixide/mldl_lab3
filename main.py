@@ -16,11 +16,14 @@ def main():
   num_epochs = int(input("Insert number of epochs:"))
 
   # Start a new wandb run to track this script.
+  api_wandb = wandb.Api()
+  runs = api_wandb.runs("dani-catalano02-politecnico-di-torino/MLDL_lab3")
+  experiment_name = "Experiment_" + str(len(runs) + 1)
   run = wandb.init(
     # Set the wandb project where this run will be logged.
     entity="dani-catalano02-politecnico-di-torino",
     project="MLDL_lab3",
-    name="Experiment_1",
+    name= experiment_name,
     # Track hyperparameters and run metadata.
     config={
         "learning_rate": 0.001,
@@ -34,8 +37,8 @@ def main():
 
   data_loader = TinyImageNetDataLoader(data_dir='dataset/tiny_imagenet/tiny-imagenet-200', batch_size=64)
   train_loader , val_loader = data_loader.get_dataloaders()
-  #model = CustomNet().cuda()
-  model = ResNet50Model().cuda()
+  model = CustomNet().cuda()
+  #model = ResNet50Model().cuda()
   criterion = nn.CrossEntropyLoss()
   optimizer = optim.Adam(model.parameters(), lr=0.001)
   #scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
@@ -53,7 +56,7 @@ def main():
       run.log({"Train Accuracy":train_acc,"Train Loss":train_loss,"Validation Accuracy":val_acc,"Validation Loss":val_loss})
       # Best validation accuracy
       best_acc = max(best_acc, val_acc)
-      checkpoint = "checkpoint_" + epoch
+      checkpoint = "checkpoint_" + str(epoch)
       torch.save({
         'epoch' : epoch ,
         'model_state_dict' : model.state_dict() ,
